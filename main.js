@@ -1,7 +1,7 @@
 const { 
   app,
   BrowserWindow,
-  Notification
+  Notification,
 } = require('electron')
 
 const axios = require('axios');
@@ -57,6 +57,6 @@ function novaNotification(notificacoes) {
 
     console.log("Exibindo notificação");
 
-    novaNotification.show();
+    //novaNotification.show();
   });
 }
