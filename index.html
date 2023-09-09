@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
     <title>Notificações</title>
 
     <link rel="stylesheet" href="styles.css">
@@ -21,9 +19,11 @@
             <label for="corpo">Corpo:</label>
             <textarea id="corpo" name="corpo" rows="4" required></textarea><br>
 
-            <button type="submit">Enviar</button>
+            <button id="btn" type="submit">Enviar</button>
         </form>
     </div>
+
+    <script src="renderer.js"></script>
 </body>
 
 </html>

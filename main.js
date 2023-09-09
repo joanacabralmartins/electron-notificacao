@@ -2,14 +2,19 @@ const {
   app,
   BrowserWindow,
   Notification,
+  ipcMain,
 } = require('electron')
 
-const axios = require('axios');
+const path = require('path')
+const axios = require('axios')
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
-    height: 600
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+    }
   })
 
   win.loadFile('index.html')
@@ -17,7 +22,7 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow()
-  carregarNotificacoes()
+  //carregarNotificacoes()
 })
 
 app.on('window-all-closed', () => {
@@ -57,6 +62,10 @@ function novaNotification(notificacoes) {
 
     console.log("Exibindo notificação");
 
-    //novaNotification.show();
+    novaNotification.show();
   });
 }
+
+ipcMain.on('enviar-notificacao', (event, titulo, corpo) => {
+  console.log(titulo, corpo)
+})
