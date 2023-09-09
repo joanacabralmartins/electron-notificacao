@@ -63,9 +63,21 @@ function novaNotification(notificacoes) {
     console.log("Exibindo notificação");
 
     novaNotification.show();
-  });
+  })
 }
 
 ipcMain.on('enviar-notificacao', (event, titulo, corpo) => {
   console.log(titulo, corpo)
+
+  axios.patch('http://localhost:3000/atualizarNotificacao', { 
+    titulo: titulo,
+    corpo: corpo,
+    mostrar: 1,
+  })
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.error(error)
+    })
 })
